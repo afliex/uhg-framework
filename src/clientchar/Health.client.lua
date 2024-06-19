@@ -1,0 +1,1 @@
+--This is an empty script to stop Roblox's automatic regeneration for humanoids.

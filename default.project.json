@@ -1,0 +1,44 @@
+{
+  "name": "uhg_framework",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "$path": "src/replicatedstorage"
+    },
+
+    "ServerScriptService": {
+      "$path": "src/server"
+    },
+
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "$path": "src/clientplr"
+      },
+
+      "StarterCharacterScripts": {
+        "$path": "src/clientchar",
+        "JumpCooldown": {
+          "$path":"src/clientchar/JumpCooldown",
+          "Delay": {
+            "$className": "NumberValue",
+            "$properties": {
+              "Value": 3
+            }
+          }
+        }
+      }
+    },
+
+    "Workspace": {
+      "$properties": {
+        "FilteringEnabled": true
+      }
+    },
+    "SoundService": {
+      "$properties": {
+        "RespectFilteringEnabled": true
+      }
+    }
+  }
+}
