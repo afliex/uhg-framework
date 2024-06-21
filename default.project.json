@@ -4,11 +4,41 @@
     "$className": "DataModel",
 
     "ReplicatedStorage": {
-      "$path": "src/replicatedstorage"
+      "$path": "src/replicatedstorage",
+      "Events": {
+        "$className": "Folder",
+        "CharacterEvents": {
+          "$className": "BindableEvent"
+        }
+      },
+      "RemoteEvents": {
+          "$className": "Folder",
+          "ChangeCharacterSpeed": {
+            "$className": "RemoteEvent"
+          },
+          "ListenForHumanoidState": {
+            "$className": "RemoteEvent"
+          },
+          "ReturnAccurateHumanoidState": {
+            "$className": "RemoteEvent"
+          },
+          "SendNotification": {
+            "$className": "RemoteEvent"
+          }
+        }
     },
 
     "ServerScriptService": {
-      "$path": "src/server"
+      "$path": "src/server",
+      "PlayerSetup": {
+        "$path": "src/playersetup"
+      }
+    },
+
+    "ServerStorage": {
+      "ServerDependencies": {
+        "$path": "src/serverdependencies" 
+      }
     },
 
     "StarterPlayer": {
@@ -17,16 +47,7 @@
       },
 
       "StarterCharacterScripts": {
-        "$path": "src/clientchar",
-        "JumpCooldown": {
-          "$path":"src/clientchar/JumpCooldown",
-          "Delay": {
-            "$className": "NumberValue",
-            "$properties": {
-              "Value": 3
-            }
-          }
-        }
+        "$path": "src/clientchar"
       }
     },
 

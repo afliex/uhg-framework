@@ -2,7 +2,7 @@ local character = script.Parent
 local humanoid = character:WaitForChild("Humanoid") :: Humanoid
 
 local canjump = true
-local jumpdelay = script:WaitForChild("Delay")
+local jumpdelay = 2
 
 function OnFreefalling(freefalling)
 	if not freefalling then
@@ -10,7 +10,7 @@ function OnFreefalling(freefalling)
 			canjump = false
 			humanoid.JumpHeight = 0
 
-			task.delay(jumpdelay.Value, function()
+			task.delay(jumpdelay, function()
 				if character:GetAttribute("Stamina") >= 10 then
 					humanoid.JumpHeight = 4
 					canjump = true
