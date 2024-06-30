@@ -90,7 +90,7 @@ players.PlayerAdded:Connect(function(player)
 		end)
 		
 		humanoid.HealthChanged:Connect(function(newhealth)
-			if newhealth >= 30 then
+			if newhealth <= 30 then
 				downsystem.OnDowned(character)
 			end
 		end)
