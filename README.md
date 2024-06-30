@@ -1,10 +1,8 @@
-# UHG FRAMEWORK
-This is *most* of the UHG framework hosted on github. This project uses [Rojo](https://rojo.space/) to actually make the files, well, work.
+# BUILDING
+As long as you have [Rojo](https://rojo.space/) installed, you only need to use one command:
+```
+rojo build path/to/uhg_src/ -o UHG_FRAMEWORK.rbxm
+```
 
-The things that are included in this repo:
-```
-ALL REQUIRED UHG CODE AND DEPENDENCIES: ✅
-GUI AND UI OBJECTS: ❌
-ANIMATIONS: ❌
-EVENTS, REMOTE EVENTS, ETC: ✅
-```
+> [!NOTE]
+> This repo only includes the required code and dependencies to make the game functional. GUI/UI objects and animations won't be included here but they can be found in the games testing place.
