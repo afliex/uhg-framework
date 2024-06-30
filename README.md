@@ -1,5 +1,10 @@
-# intro
-bla bla bla uhg framework yeah we get it
+# UHG FRAMEWORK
+This is *most* of the UHG framework hosted on github. This project uses [Rojo](https://rojo.space/) to actually make the files, well, work.
 
-# how to build
-build it
+The things that are included in this repo:
+```
+ALL REQUIRED UHG CODE AND DEPENDENCIES: ✅
+GUI AND UI OBJECTS: ❌
+ANIMATIONS: ❌
+EVENTS, REMOTE EVENTS, ETC: ✅
+```
