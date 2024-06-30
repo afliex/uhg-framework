@@ -10,11 +10,9 @@ function ragdoll:Ragdoll(character : Model, addedvelo)
 	if IsRagdolled(character) == false then
 		character:SetAttribute("Ragdolled", true)
 		character:SetAttribute("RagdollTick", tick())
-		
-		--/Setting humanoid state to "Ragdoll"
+
 		local humanoid = character:WaitForChild("Humanoid") :: Humanoid
-		
-		print(humanoid:GetState())
+		humanoid.AutoRotate = false
 
 		--/Adding extra velocity
 		if addedvelo ~= nil then
@@ -52,7 +50,9 @@ end
 
 function ragdoll:UnRagdoll(character)
 	if IsRagdolled(character) == true then
-		--/Setting humanoid state back to normal
+		local humanoid = character:WaitForChild("Humanoid") :: Humanoid
+		humanoid.AutoRotate = true
+
 		character:SetAttribute("Ragdolled", false)
 
 		--/Setting character joints back to normal
