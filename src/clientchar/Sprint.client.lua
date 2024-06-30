@@ -42,13 +42,15 @@ function sprint(active)
 		if active == true then
 			if humanoid.MoveDirection.Magnitude > 0 and character:GetAttribute("Stamina") > character:GetAttribute("MinimumStaminaRequirement") then
 				tweenservice:Create(camera, tweeninfo, {FieldOfView = camera.FieldOfView * fovmultiplier}):Play()
+				
 				characterevents:Fire("ChangeCharacterSpeed", humanoid.WalkSpeed + speed)
 
 				sprintinganim = QuickCreateAnimation(16126931010, humanoid.WalkSpeed / sprintingspeeddivisor)
 			end
 		else
 			tweenservice:Create(camera, tweeninfo, {FieldOfView = oldfov}):Play()
-			characterevents:Fire("ChangeCharacterSpeed", humanoid.WalkSpeed - speed)
+			
+			characterevents:Fire("ChangeCharacterSpeed", 16)
 
 			if sprintinganim then
 				sprintinganim:Stop()
