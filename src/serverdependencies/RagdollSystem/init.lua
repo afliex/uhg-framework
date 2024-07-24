@@ -8,13 +8,23 @@ end
 
 function ragdoll:Ragdoll(character : Model, addedvelo)
 	if IsRagdolled(character) == false then
-		character:SetAttribute("Ragdolled", true)
-		character:SetAttribute("RagdollTick", tick())
-
 		local humanoid = character:WaitForChild("Humanoid") :: Humanoid
 		humanoid.AutoRotate = false
 
-		--/Adding extra velocity
+		character:SetAttribute("Ragdolled", true)
+		character:SetAttribute("RagdollTick", tick())
+
+		for _,v in pairs(character:GetDescendants()) do
+			if v:IsA("Motor6D") then
+				constrainthandler:ReplaceJointWithBallSocketContraint(v)
+			elseif v:IsA("BasePart") then
+				v:SetNetworkOwner(nil)
+			end
+		end
+
+		humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp, false)
+		humanoid:ChangeState(Enum.HumanoidStateType.Ragdoll)
+
 		if addedvelo ~= nil then
 			local hrp = character:WaitForChild("HumanoidRootPart")
 
@@ -29,8 +39,7 @@ function ragdoll:Ragdoll(character : Model, addedvelo)
 			angularvelocity.MaxTorque = math.huge
 			angularvelocity.AngularVelocity = Vector3.new(addedvelo,0,addedvelo)
 		end	
-
-		--/An extra precaution to ensure the character isn't ragdolled forever
+		
 		task.delay(14, function()
 			local timewaited = tick() - character:GetAttribute("RagdollTick")
 
@@ -38,13 +47,6 @@ function ragdoll:Ragdoll(character : Model, addedvelo)
 				warn("[ragdoll_sys]: ensure that there is a point in your script that will unragdoll the player after a certain amount of time")
 			end
 		end)
-		
-		--/Limb movement
-		for _,v in pairs(character:GetDescendants()) do
-			if v:IsA("Motor6D") then
-				constrainthandler:ReplaceJointWithBallSocketContraint(v)
-			end
-		end
 	end
 end
 
@@ -55,11 +57,14 @@ function ragdoll:UnRagdoll(character)
 
 		character:SetAttribute("Ragdolled", false)
 
-		--/Setting character joints back to normal
 		constrainthandler:RevertRagdollConstraintChanges(character)
-		
-		local humanoidrootpart = character:WaitForChild("HumanoidRootPart")
-		humanoidrootpart.CFrame = humanoidrootpart.CFrame * CFrame.new(0,7,0)
+		humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+
+		for _,v in pairs(character:GetDescendants()) do
+			if v:IsA("BasePart") then
+				v:SetNetworkOwner(game:GetService("Players"):GetPlayerFromCharacter(character))
+			end
+		end
 	end
 end
 
