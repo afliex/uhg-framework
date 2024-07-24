@@ -33,6 +33,7 @@ function FallDamage(character, limb)
 
 	if dmg ~= nil then
 		adh:DealDamageToCharacter(character, dmg, limb)
+		print("limb dmg taken", limb)
 	end
 
 	if distancefallen >= 25 then
@@ -58,7 +59,7 @@ function fd.OnFreefall(active, character)
 
 		character:SetAttribute("PositionBeforeFreefall", humanoidrootpart.Position)
 
-		task.delay(2.3, function()
+		task.delay(.15, function()
 			local state = humanoid:GetState()
 			
 			if state == Enum.HumanoidStateType.Freefall then
@@ -68,7 +69,6 @@ function fd.OnFreefall(active, character)
 	else
 		if character:GetAttribute("Ragdolled") ~= true then
 			FallDamage(character, "Left Leg,Right Leg")
-			character:SetAttribute("CanDealTouchedDamage", false)
 		end
 	end
 end
@@ -84,7 +84,7 @@ function fd.OnTouched(touchingpart, humanoidpart, character)
 
 				character:SetAttribute("PositionBeforeFreefall", humanoidrootpart.Position)
 
-				task.wait(.35)
+				--task.wait(.35)
 				character:SetAttribute("CanDealTouchedDamage", true)
 			end
 		end
