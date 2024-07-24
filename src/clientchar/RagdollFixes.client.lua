@@ -12,10 +12,7 @@ character:GetAttributeChangedSignal("Ragdolled"):Connect(function()
 	
 	if ragdolled == true then
 		camera.CameraSubject = character:WaitForChild("HumanoidRootPart")
-		humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp, false)
-		humanoid:ChangeState(Enum.HumanoidStateType.Ragdoll)
 	else
 		camera.CameraSubject = humanoid
-		humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
 	end
 end)
