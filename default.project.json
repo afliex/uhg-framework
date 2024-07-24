@@ -5,6 +5,7 @@
 
     "ReplicatedStorage": {
       "$path": "src/replicatedstorage",
+      "$ignoreUnknownInstances": true,
       "Events": {
         "$className": "Folder",
         "CharacterEvents": {
