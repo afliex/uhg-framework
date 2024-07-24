@@ -1,5 +1,5 @@
 local atd = {
-	LimbDamageMultiplier = 2.3
+	LimbDamageMultiplier = 1.34
 }
 
 function atd:DealDamageToCharacter(character, dmg, limbname)
@@ -32,6 +32,8 @@ function atd:DealDamageToCharacter(character, dmg, limbname)
 
 					local newhealth = currentlimbhealth - (dmg * atd.LimbDamageMultiplier)
 					limb:SetAttribute("Health", newhealth)
+
+					print("limb", limb:GetAttribute("Health"))
 				end
 			end
 		else
